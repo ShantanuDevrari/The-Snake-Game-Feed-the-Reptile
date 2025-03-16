@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Main Menu -->
+    <div id="menu">
+        <h1>Snake Game</h1>
+        <button onclick="startGame()">Start New Game</button>
+        <button onclick="openSettings()">Options</button>
+        <div id="highScore">High Score: 0</div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settingsPanel">
+        <h2>Game Options</h2>
+        <label for="speedSelect">Snake Speed:</label>
+        <select id="speedSelect">
+            <option value="100">Slow</option>
+            <option value="80">Medium</option>
+            <option value="50">Fast</option>
+        </select>
+        <br>
+        <label for="headColor">Snake Head Color:</label>
+        <input type="color" id="headColor" value="#00FF00">
+        <br>
+        <label for="tailColor">Snake Tail Color:</label>
+        <input type="color" id="tailColor" value="#000000">
+        <br>
+        <button onclick="saveSettings()">Save Settings</button>
+        <button onclick="cancelSettings()">Cancel</button>
+    </div>
+
+    <!-- Game Area -->
+    <div id="gameArea" style="display: none;">
+        <div id="score">Score: 0</div>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div id="gameOverMessage" style="display: none;">
+            Game Over! Press Enter to Restart
+            <br>
+            <button onclick="quitGame()">Quit Game</button>
+        </div>
+    </div>
+
+    <!-- Exit Message -->
+    <div id="exitMessage" style="display: none;">
+        <h2>Game Closed</h2>
+        <p>Thank you for playing! You can close the window now.</p>
+        <button onclick="closeGame()">Close Game</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
